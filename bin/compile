@@ -9,16 +9,6 @@ function prints() {
   echo "-----> $*"
 }
 
-#Checking and updating the $WKHTMLTOPDF_URL from Aptfile
-if [ -f "$BUILD_DIR/Aptfile" ]; then
-    if [ ! $(cat $BUILD_DIR/Aptfile | grep -v -s -e '^#') == "" ]; then
-	    prints "AptFile detected"
-	    prints "Using binary from Aptfile"
-        WKHTMLTOPDF_URL=$(cat $BUILD_DIR/Aptfile | grep -v -s -e '^#')
-    fi
-fi
-#DONE
-
 WKHTMLTOPDF_PATH_EXTRACT=$CACHE_DIR/wkhtmltox
 DESTINATION=$BUILD_DIR/bin
 PACKAGE_NAME=$CACHE_DIR/$(basename $WKHTMLTOPDF_URL) 
